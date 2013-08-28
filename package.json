@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "ejs": "~0.8.4",
-    "redis": "~0.8.4"
+    "redis": "~0.8.4",
+    "node-static": "~0.7.1",
+    "journey": "~0.4.0-pre-3"
   }
 }
