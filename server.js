@@ -7,14 +7,6 @@ var fs = require('fs'),
 var User = require('./models/user'),
     Room = require('./models/room');
 
-function index() {
-	var res = this.res;
-	res.writeHead(200, {'Content-type': 'text/html'});
-	fs.readFile('./views/index.ejs', 'utf8', function(e, view) {
-		res.end(ejs.render(view));
-	});	
-}
-
 var router = new director.http.Router({
 	'/': {
 		get: function() {
