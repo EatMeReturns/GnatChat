@@ -1,5 +1,4 @@
-libluajit.dll
-luvit.exe
+node_modules
 
 #################
 ## Eclipse

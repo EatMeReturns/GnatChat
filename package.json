@@ -1,0 +1,19 @@
+{
+  "name": "GnatChat",
+  "version": "0.0.0",
+  "description": "Something that can really be used by anybody for anything.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EatMeReturns/GnatChat"
+  },
+  "author": "",
+  "license": "N/A",
+  "bugs": {
+    "url": "https://github.com/EatMeReturns/GnatChat/issues"
+  }
+}
