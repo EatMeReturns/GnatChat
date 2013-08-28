@@ -15,5 +15,9 @@
   "license": "N/A",
   "bugs": {
     "url": "https://github.com/EatMeReturns/GnatChat/issues"
+  },
+  "dependencies": {
+    "ejs": "~0.8.4",
+    "redis": "~0.8.4"
   }
 }
