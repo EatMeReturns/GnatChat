@@ -20,6 +20,8 @@
     "ejs": "~0.8.4",
     "redis": "~0.8.4",
     "node-static": "~0.7.1",
-    "director": "~1.2.0"
+    "director": "~1.2.0",
+    "bone.io": "~0.8.9",
+    "socket.io": "~0.9.16"
   }
 }
