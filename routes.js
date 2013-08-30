@@ -1,7 +1,8 @@
 var fs = require('fs'),
-    ejs = require('ejs');
+    ejs = require('ejs'),
+    bone = require('bone.io');
 
-module.exports = {
+module.exports.director = {
 	'/': {
 		get: function() {
 			var res = this.res;
@@ -10,5 +11,15 @@ module.exports = {
 				res.end(ejs.render(view));
 			});	
 		}
+	}
+};
+
+module.exports.bone = {
+	outbound: {
+		routes: []
+	},
+	
+	inbound: {
+		
 	}
 };
