@@ -1,15 +1,12 @@
-var http = require('http'),
-    director = require('director'),
+var director = require('director'),
     static = require('node-static'),
-    bone = require('bone.io'),
-    redis = require('redis');
+    redis = require('redis'),
+    io = require('socket.io');
 
-var routes = require('./routes'),
-    router = new director.http.Router(routes.director),
-    files = new static.Server('./static'),
-    db = require('./db');
+var router = new director.http.Router(require('./routes')),
+    files = new static.Server('./static');
 
-var server = http.createServer(function (req, res) {
+var server = require('http').createServer(function (req, res) {
 	router.dispatch(req, res, function(e) {
 		if(e) {
 			return files.serve(req, res, function() {
@@ -20,9 +17,7 @@ var server = http.createServer(function (req, res) {
 	});
 }).listen(1337, '127.0.0.1');
 
-var io = require('socket.io').listen(server, {log: false});
-
-bone.set('io.options', {server: io});
-bone.io('gnat', routes.bone);
+io = io.listen(server, {log: false});
+require('./boner')(io);
 
 console.log('Server running at http://127.0.0.1:1337/');
