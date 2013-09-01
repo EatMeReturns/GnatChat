@@ -1,6 +1,5 @@
 var director = require('director'),
     static = require('node-static'),
-    redis = require('redis'),
     io = require('socket.io');
 
 var router = new director.http.Router(require('./routes')),

@@ -1,4 +1,5 @@
-var bone = require('bone.io');
+var bone = require('bone.io'),
+    redis = require('redis').createClient();
 
 channels = {
 	'gnat': {
@@ -9,6 +10,8 @@ channels = {
 		inbound: {
 			login: function(data, context) {
 				console.log(data);
+				redis.set(data, 'awesome');
+				redis.expire(data, 10);
 			}
 		}
 	}
