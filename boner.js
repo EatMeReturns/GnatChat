@@ -3,11 +3,13 @@ var bone = require('bone.io');
 channels = {
 	'gnat': {
 		outbound: {
-			routes: []
+			routes: ['login']
 		},
 
 		inbound: {
-
+			login: function(data, context) {
+				console.log(data);
+			}
 		}
 	}
 }

@@ -18,6 +18,8 @@ var server = require('http').createServer(function (req, res) {
 }).listen(1337, '127.0.0.1');
 
 io = io.listen(server, {log: false});
+io.set('browser client minification', true);
+io.set('browser client gzip', true);
 require('./boner')(io);
 
 console.log('Server running at http://127.0.0.1:1337/');
