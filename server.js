@@ -1,11 +1,16 @@
-var bone = require('bone.io');
+var http = require('http'),
+    director = require('director'),
+    static = require('node-static'),
+    bone = require('bone.io'),
+    redis = require('redis'),
+    sqlite = require('sqlite3');
 
-var routes = require('./routes');
+var routes = require('./routes'),
+    router = new director.http.Router(routes.director),
+    files = new static.Server('./static'),
+    db = new sqlite.cached.Database('./data/GnatChat');
 
-var router = new (require('director')).http.Router(routes.director),
-    files = new (require('node-static')).Server('./static');
-
-var server = require('http').createServer(function (req, res) {
+var server = http.createServer(function (req, res) {
 	router.dispatch(req, res, function(e) {
 		if(e) {
 			return files.serve(req, res, function() {
@@ -16,12 +21,9 @@ var server = require('http').createServer(function (req, res) {
 	});
 }).listen(1337, '127.0.0.1');
 
-var io = require('socket.io').listen(server);
+var io = require('socket.io').listen(server, {log: false});
 
-bone.set('io.options', {
-	server: io
-});
-
+bone.set('io.options', {server: io});
 bone.io('gnat', routes.bone);
 
 console.log('Server running at http://127.0.0.1:1337/');
