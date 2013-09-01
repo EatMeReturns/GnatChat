@@ -2,13 +2,12 @@ var http = require('http'),
     director = require('director'),
     static = require('node-static'),
     bone = require('bone.io'),
-    redis = require('redis'),
-    sqlite = require('sqlite3');
+    redis = require('redis');
 
 var routes = require('./routes'),
     router = new director.http.Router(routes.director),
     files = new static.Server('./static'),
-    db = new sqlite.cached.Database('./data/GnatChat');
+    db = require('./db');
 
 var server = http.createServer(function (req, res) {
 	router.dispatch(req, res, function(e) {

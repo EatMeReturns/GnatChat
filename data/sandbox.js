@@ -1,6 +1,4 @@
-var sqlite = require('sqlite3');
-
-var db = sqlite.cached.Database('./data/GnatChat');
+var db = require('./db');
 
 db.serialize(function() {
 	db.run('CREATE TABLE users (username TEXT, password TEXT)', function() {
