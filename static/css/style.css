@@ -21,3 +21,23 @@ body {
 	margin-top: 50%;
 	letter-spacing: 12px;
 }
+
+.login p {
+	font-size: 1.2em;
+}
+
+.login input {
+	border-radius: 6px;
+	padding: 8px;
+	font-size: 0.9em;
+	background-color: #232323;
+}
+
+.login input[type="text"] {
+	width: 160px;
+}
+
+.rooms {
+	list-style-type: none;
+	padding: 1.0em 0;
+}

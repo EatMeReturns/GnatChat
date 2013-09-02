@@ -4,7 +4,7 @@ var bone = require('bone.io'),
 channels = {
 	'gnat': {
 		outbound: {
-			routes: ['login']
+			routes: ['login', 'room']
 		},
 
 		inbound: {
@@ -12,6 +12,14 @@ channels = {
 				console.log(data);
 				redis.set(data, 'awesome');
 				redis.expire(data, 10);
+				this.login({
+					success: true
+				});
+			},
+
+			getRooms: function(data, context) {
+				this.room('The Skype Group');
+				this.room('Room of Doom');
 			}
 		}
 	}
