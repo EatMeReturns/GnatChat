@@ -6,12 +6,9 @@ var router = new director.http.Router(require('./routes')),
     files = new static.Server('./static');
 
 var server = require('http').createServer(function (req, res) {
-	router.dispatch(req, res, function(e) {
-		if(e) {
-			return files.serve(req, res, function() {
-				res.writeHead(404);
-				res.end('404');
-			});
+	files.serve(req, res, function(e) {
+		if(e && e.status == 404) {
+			files.serveFile('/index.html', 200, {}, req, res);
 		}
 	});
 }).listen(1337, '127.0.0.1');
